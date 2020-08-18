@@ -7,17 +7,17 @@ exports.handler = async (event, context, callback) => {
     await prisma.user.deleteMany()
 
     const createdUser = await prisma.user.create({
-      data: seedUser
+      data: seedUser,
     })
 
     const createdUser2 = await prisma.user.create({
-      data: seedUser2
+      data: seedUser2,
     })
 
     return {
       statusCode: 201,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify([createdUser, createdUser2])
+      body: JSON.stringify([createdUser, createdUser2]),
     }
   } catch (error) {
     console.error(error)
@@ -36,8 +36,10 @@ const seedUser = {
   posts: {
     create: [
       {
-        title: 'Comparing Database Types: How Database Types Evolved to Meet Different Needs',
-        content: 'https://www.prisma.io/blog/comparison-of-database-models-1iz9u29nwn37/',
+        title:
+          'Comparing Database Types: How Database Types Evolved to Meet Different Needs',
+        content:
+          'https://www.prisma.io/blog/comparison-of-database-models-1iz9u29nwn37/',
       },
       {
         title: 'Analysing Sleep Patterns: The Quantified Self',
